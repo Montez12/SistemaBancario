@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 31-Ago-2017 às 14:18
+-- Generation Time: 28-Set-2017 às 17:02
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -40,7 +40,9 @@ CREATE TABLE `agencias` (
 --
 
 INSERT INTO `agencias` (`id`, `numero`, `nome`, `ativo`, `criado`, `modificado`) VALUES
-(1, '1213', 'Lins', 1, '2017-08-24 12:03:10', '2017-08-24 12:03:10');
+(1, '1213', 'Lins', 1, '2017-08-24 12:03:10', '2017-08-24 12:03:10'),
+(2, '1516', 'Ibirapuera', 1, '2017-09-28 11:38:38', '2017-09-28 11:38:38'),
+(3, '4444', 'fedgfdfgdg', 1, '2017-09-28 11:55:21', '2017-09-28 11:55:21');
 
 -- --------------------------------------------------------
 
@@ -82,7 +84,7 @@ CREATE TABLE `contas` (
   `id` int(11) NOT NULL,
   `agencia_id` int(11) NOT NULL,
   `numero` varchar(255) NOT NULL,
-  `saldo` decimal(10,2) NOT NULL,
+  `saldo` decimal(10,2) NOT NULL DEFAULT '0.00',
   `usuario_id` int(11) NOT NULL,
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `criado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -98,8 +100,8 @@ CREATE TABLE `contas` (
 CREATE TABLE `transacoes` (
   `id` int(11) NOT NULL,
   `conta_id` int(11) NOT NULL,
-  `conta_destino_id` int(11) DEFAULT NULL,
-  `valor` decimal(10,2) NOT NULL,
+  `conta_destino_id` int(11) NOT NULL,
+  `valor` decimal(10,2) NOT NULL DEFAULT '0.00',
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `criado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -203,7 +205,7 @@ ALTER TABLE `usuarios_login`
 -- AUTO_INCREMENT for table `agencias`
 --
 ALTER TABLE `agencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `caixas`
 --
