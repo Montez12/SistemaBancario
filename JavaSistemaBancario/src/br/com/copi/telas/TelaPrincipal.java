@@ -41,6 +41,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mArquivo = new javax.swing.JMenu();
         mAgencias = new javax.swing.JMenu();
         miCadastrar = new javax.swing.JMenuItem();
+        miListar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Principal");
@@ -59,6 +60,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mAgencias.add(miCadastrar);
+
+        miListar.setText("Listar");
+        miListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miListarActionPerformed(evt);
+            }
+        });
+        mAgencias.add(miListar);
 
         jMenuBar1.add(mAgencias);
 
@@ -92,6 +101,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         this.setEnabled(false);
     }//GEN-LAST:event_miCadastrarActionPerformed
+
+    private void miListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miListarActionPerformed
+        // TODO add your handling code here:
+      //Tela de Listagem de Agências
+        new TelaListarAgencias(this).setVisible(true);
+        
+        this.setEnabled(false);
+        
+    }//GEN-LAST:event_miListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,5 +152,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mAgencias;
     private javax.swing.JMenu mArquivo;
     private javax.swing.JMenuItem miCadastrar;
+    private javax.swing.JMenuItem miListar;
     // End of variables declaration//GEN-END:variables
 }

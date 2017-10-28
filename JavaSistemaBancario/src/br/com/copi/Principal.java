@@ -7,6 +7,7 @@ package br.com.copi;
 
 import br.com.copi.conexao.Conectar;
 import br.com.copi.telas.TelaLogin;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class Principal {
     public static void main(String[] args) {
         //deletarAgencia();
         TelaLogin instanciaTelaLogin = new TelaLogin();
-        instanciaTelaLogin.setVisible(true);
+        instanciaTelaLogin.setVisible(true);        
     }
     
     public static boolean adicionarAgencia(String numero, String nome) {
@@ -36,6 +37,21 @@ public class Principal {
         valores.add(nome);
 
         return Conectar.inserirRegistro(tabela, colunas, valores);
+    }
+    
+    public static ResultSet listarAgencia() {
+        String tabela = "agencias";
+
+        List<String> colunas = new ArrayList<>();
+        colunas.add("ativo");
+       
+
+        List<String> valores = new ArrayList<>();
+        
+        valores.add("1");
+        
+
+        return Conectar.buscarRegistro(tabela, colunas, valores);
     }
     
     public static void editarAgencia() {
@@ -63,14 +79,10 @@ public class Principal {
         Conectar.editarRegistro(tabela, id, colunas, valores);
     }
     
-    public static void deletarAgencia() {
+    public static boolean deletarAgencia(int id) {
         String tabela = "agencias";
         
-        Scanner reader = new Scanner(System.in);
-        
-        System.out.println("Digite o ID da Agência que deseja deletar:");
-        int id = reader.nextInt();
-
-        Conectar.deletarRegistro(tabela, id);
+        return Conectar.deletarRegistro(tabela, id);
     }
+    
 }
